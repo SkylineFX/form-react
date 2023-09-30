@@ -5,7 +5,6 @@ import Plans from "./Plans"
 import Addons from "./Addons"
 import Summary from "./Summary"
 import Thanks from './Thanks'
-import { act } from 'react-dom/test-utils'
 
 const steps = [
   {id: 1, text: 'Your info'},

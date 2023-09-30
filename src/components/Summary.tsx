@@ -3,7 +3,7 @@ import { avalilablePlans } from "./Plans"
 
 export default function Summary({activePlan, yearly, onChangeMind, addons}: any) {
   const planPrice = avalilablePlans.filter(plan => plan.name === activePlan)[0].price
-  const addonsPrice = allAddons.filter((addon, i) => addons[i]).reduce((accum, addon) => accum + addon.price, 0)
+  const addonsPrice = allAddons.filter((_, i) => addons[i]).reduce((accum, addon) => accum + addon.price, 0)
 
   return (
     <div className="bg-white rounded-xl px-6 py-8 flex flex-col gap-5 shadow-md absolute right-4 left-4 -top-[76px]">
