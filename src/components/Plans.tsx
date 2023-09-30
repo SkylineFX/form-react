@@ -16,7 +16,7 @@ export default function Plans({activePlan, yearly, onChangePlan, onChangeBilling
           <div onClick={() => onChangePlan(plan.name)}
             key={plan.id} className={`${activePlan === plan.name ? 'bg-magnolia outline-purplish-blue' : ''} flex items-start outline outline-1 outline-light-gray rounded-md px-4 py-4 gap-4 cursor-pointer`}>
             <div>
-              <img src={`/src/assets/images/icon-${plan.name}.svg`} alt="" className="mt-[2px]"/>
+              <img src={`src/assets/images/icon-${plan.name}.svg`} alt="" className="mt-[2px]"/>
             </div>
             <div>
               <h3 className="text-marine-blue font-medium capitalize">{plan.name}</h3>
