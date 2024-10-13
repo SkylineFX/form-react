@@ -62,24 +62,24 @@ export default function Form() {
   }
  
   return (
-    <div className="h-screen flex flex-col">
-      <div className="bg-sidebar-mobile bg-no-repeat bg-cover">
-        <div className="flex justify-center gap-4 pt-8 pb-28">
+    <div className="h-screen flex flex-col xl:flex-row xl:p-8 xl:text-xl max-w-[1600px] mx-auto">
+      <div className="bg-sidebar-mobile bg-no-repeat bg-cover xl:bg-sidebar-desktop xl:w-1/4 xl:rounded-xl">
+        <div className="flex justify-center gap-4 pt-8 pb-28 xl:flex-col xl:items-start xl:pb-0 xl:pt-12 xl:pl-12 xl:gap-10">
           {steps.map(step =>
-            <div key={step.id} className="flex" onClick={() => setActivePage(step.id)}>
-              <div className={`h-8 w-8 rounded-full grid place-content-center cursor-pointer select-none font-semibold ${activePage === step.id ?'bg-light-blue outline-transparent text-marine-blue' : 'text-white outline outline-white outline-1'}`}>
+            <div key={step.id} className="flex xl:items-center xl:gap-4" onClick={() => setActivePage(step.id)}>
+              <div className={`h-8 w-8 rounded-full grid place-content-center cursor-pointer select-none font-semibold xl:w-10 xl:h-10 ${activePage === step.id ?'bg-light-blue outline-transparent text-marine-blue' : 'text-white outline outline-white outline-1'}`}>
                 <p className="">{step.id}</p>
               </div>
-              <div className="hidden">
-                <span>Step {step.id}</span>
-                <p>{step.text}</p>
+              <div className="hidden xl:block leading-tight">
+                <span className='uppercase text-light-gray text-sm'>Step {step.id}</span>
+                <p className='uppercase tracking-widest text-white text-lg font-bold'>{step.text}</p>
               </div>
             </div>
           )}
         </div>
       </div>
 
-      <div className="bg-magnolia flex-1 relative">
+      <div className="bg-magnolia flex-1 relative xl:bg-white">
         {activePage === 1 && (
           <Info 
             name={formInfo.name}
@@ -110,13 +110,14 @@ export default function Form() {
             addons={formInfo.addons}/>
         )}
         {activePage === 5 && <Thanks/>}
+
+        {activePage < 5 &&
+          <div className=" flex items-center justify-between px-4 h-20 absolute bottom-0 left-0 right-0 bg-white">
+            <button className="py-2 px-4 text-cool-gray font-medium rounded-md disabled:opacity-0" onClick={() => setActivePage(activePage - 1)} disabled={activePage === 1}>Go Back</button>
+            <button className={`${activePage === 4 ? 'bg-purplish-blue' : ''} py-2 px-4 bg-marine-blue text-white rounded-md disabled:opacity-0`} onClick={() => handleNextPage()}>{activePage < 4 ? 'Next Step' : 'Confirm'}</button>
+          </div>
+        }
       </div>
-      {activePage < 5 &&
-        <div className=" flex items-center justify-between px-4 h-20">
-          <button className="py-2 px-4 text-cool-gray font-medium rounded-md disabled:opacity-0" onClick={() => setActivePage(activePage - 1)} disabled={activePage === 1}>Go Back</button>
-          <button className={`${activePage === 4 ? 'bg-purplish-blue' : ''} py-2 px-4 bg-marine-blue text-white rounded-md disabled:opacity-0`} onClick={() => handleNextPage()}>{activePage < 4 ? 'Next Step' : 'Confirm'}</button>
-        </div>
-      }
     </div>
   )
 }

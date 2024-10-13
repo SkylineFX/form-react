@@ -6,16 +6,16 @@ export default function Summary({activePlan, yearly, onChangeMind, addons}: any)
   const addonsPrice = allAddons.filter((_, i) => addons[i]).reduce((accum, addon) => accum + addon.price, 0)
 
   return (
-    <div className="bg-white rounded-xl px-6 py-8 flex flex-col gap-5 shadow-md absolute right-4 left-4 -top-[76px]">
+    <div className="bg-white rounded-xl px-6 py-8 flex flex-col gap-5 shadow-md absolute right-4 left-4 -top-[76px] xl:top-4 xl:gap-10 xl:shadow-none">
       <div className="flex flex-col gap-2">
-        <h2 className="text-2xl font-semibold text-marine-blue">Finishing up</h2>
+        <h2 className="text-2xl font-semibold text-marine-blue xl:text-4xl">Finishing up</h2>
         <p className="text-cool-gray">Double-check everything looks OK before confirming.</p>
       </div>
       <div className="flex flex-col gap-3 bg-[#ecf3fc] rounded-md px-4 py-4">
         <div className={`flex items-center justify-between ${addons.find((addon: any) => addon === true) ? 'border-b  border-light-gray pb-4' : ''}`}>
           <div>
-            <h3 className="text-marine-blue font-medium text-sm capitalize">{activePlan} {!yearly ? '(Monthly)' : '(Yearly)'}</h3>
-            <p onClick={onChangeMind} className="text-cool-gray text-xs underline cursor-pointer">Change</p>
+            <h3 className="text-marine-blue font-medium text-sm capitalize xl:text-lg">{activePlan} {!yearly ? '(Monthly)' : '(Yearly)'}</h3>
+            <p onClick={onChangeMind} className="text-cool-gray text-xs underline cursor-pointer xl:text-sm">Change</p>
           </div>
           <p className="text-sm text-marine-blue font-semibold">${yearly ? planPrice * 10 : planPrice}/{yearly ? 'yr' : 'mo'}</p>
         </div>
